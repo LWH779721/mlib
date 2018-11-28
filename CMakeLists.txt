@@ -1,0 +1,18 @@
+cmake_minimum_required(VERSION 2.8) 
+
+PROJECT(mlibc)
+ 
+INCLUDE_DIRECTORIES(include) 
+
+AUX_SOURCE_DIRECTORY(src MLIBC)
+AUX_SOURCE_DIRECTORY(src/process PROCESS)
+AUX_SOURCE_DIRECTORY(src/time TIME)
+AUX_SOURCE_DIRECTORY(src/net NET)
+AUX_SOURCE_DIRECTORY(src/file FILE)
+AUX_SOURCE_DIRECTORY(src/sys SYS)
+
+ADD_LIBRARY (mlibc SHARED ${MLIBC} ${PROCESS} ${TIME} ${NET} ${FILE} ${SYS})
+ADD_LIBRARY (mlibc_static STATIC ${MLIBC} ${PROCESS} ${TIME} ${NET} ${FILE} ${SYS})
+
+# 指定静态库的输出名称
+set_target_properties(mlibc_static PROPERTIES OUTPUT_NAME "mlibc")
