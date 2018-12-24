@@ -23,7 +23,7 @@ int main(int argc, char **args)
 	recv(client, buffer, 100, 0);
     printf("client recv: %s\n", buffer);
 #else
-    file_save_less_word("a.txt", "MTK8516-6789");    
+    file_save_less_bytes("a.txt", "MTK8516-6789", strlen("MTK8516-6789"));    
 #endif
 	return 0;
 }
