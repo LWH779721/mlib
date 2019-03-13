@@ -5,8 +5,13 @@
 extern "C"{
 #endif
 
-extern int mnet_check_connectble(char *ipaddr, int port, int timeout);
-extern int mnet_setnoblock(int fd);
+/*
+* 判断是否可连接
+*/
+extern int check_connectable(char *ipaddr, int port, int timeout);
+extern int switch_to_noblock(int fd);
+extern int local_socket_server(const char *fname);
+extern int local_socket_server_send(int socket_fd, const char *dst_fname, char *buffer, int len);
 
 #ifdef __cplusplus
 }
