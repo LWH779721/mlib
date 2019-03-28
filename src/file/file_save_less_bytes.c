@@ -7,7 +7,7 @@
 
 #include "mstdio.h"
 
-int file_save_less_bytes(const char *fname, const char *buffer, int size)
+int file_save_less_bytes(const char *fname, void *buffer, int size)
 {
     int fd = -1;
     

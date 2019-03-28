@@ -21,22 +21,22 @@ extern "C"{
 #define timing(code)\
 do{\
 	uint64_t start, end;\
-	start = mts_get_monotonic_nts();\
+	start = mts_get_real_uts();\
 	code\
-    end = mts_get_monotonic_nts();\
+    end = mts_get_real_uts();\
 	printf("time use: %"PRIu64"\n", end - start);\
 }while(0);
 
 #define timing_tag()\
 do{\
     static uint64_t old_ts = 0;\
-    uint64_t new_ts = mts_get_monotonic_nts();\
+    uint64_t new_ts = mts_get_real_uts();\
     if (old_ts)\
         printf("time use: %"PRIu64"\n", new_ts - old_ts);\
     old_ts = new_ts;\
 }while(0);
 
-extern void hexdump(uint8_t *buffer, int len);
+extern void hexdump(unsigned char *buffer, int size);
 
 #ifdef __cplusplus
 }
