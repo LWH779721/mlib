@@ -24,3 +24,6 @@ TARGET_LINK_LIBRARIES(timeStamp_test mlibc)
 
 ADD_EXECUTABLE(test_get_ip_and_mac test_get_ip_and_mac.c)  
 TARGET_LINK_LIBRARIES(test_get_ip_and_mac mlibc)
+
+ADD_EXECUTABLE(test_mbits test_mbits.c)  
+TARGET_LINK_LIBRARIES(test_mbits mlibc)
