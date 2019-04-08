@@ -8,22 +8,24 @@
 #include <errno.h>
 #include <string.h>
 
-int uart_set_speed(int fd,int speed,int flag)
+/*
+* speed: B1200, B2400, B4800, B9600,  B19200, B38400, B57600, B115200 ...
+* timeout: 单位 100ms
+*/
+int uart_set_speed(int fd, speed_t speed, int flag, unsigned timeout)
 {
 	int   status;
-	struct termios   Opt;
-	speed_t serial_speed[] = {B1200, B2400, B4800, B9600,  B19200, B38400, B57600, B115200};
-	int serial_speed_int[] = {1200, 2400, 4800, 9600,  19200, 38400, 57600, 115200};
+	struct termios Opt;
 	
-	if (fd < 0)
-		return 0;
-	printf("set vlpr uart baudrate to %d\n",serial_speed_int[speed]);
+	if (fd < 0) return -1;
+	
+	printf("set uart baudrate to %d\n", speed);
 
 	tcgetattr(fd, &Opt);
 	cfmakeraw(&Opt);
 	tcflush(fd, TCIOFLUSH);
-	cfsetispeed(&Opt, serial_speed[speed]);
-	cfsetospeed(&Opt, serial_speed[speed]);
+	cfsetispeed(&Opt, speed);
+	cfsetospeed(&Opt, speed);
 	Opt.c_cflag &= ~PARENB;
 	if(flag)
 	{
@@ -40,18 +42,19 @@ int uart_set_speed(int fd,int speed,int flag)
 	Opt.c_lflag &= ~(ICANON | ECHO | ECHOE | ISIG);//disable echo
 	Opt.c_oflag &= ~(OCRNL|OPOST);		//OUT
 	Opt.c_iflag &= ~(INPCK|ICRNL);		//no parity
-	Opt.c_cc[VMIN] = 0;
-	Opt.c_cc[VTIME] = 0;
+	Opt.c_cc[VMIN] = 1;
+	Opt.c_cc[VTIME] = timeout;
 	status = tcsetattr(fd, TCSANOW, &Opt);  	
-	if  (status != 0)
+	if (status != 0)
 	{
 		perror("tcsetattr fd1");
+		return -1;
 	}
 	
 	return 0;
 }
 
-int uart_init(char *uart)
+int uart_open(char *uart)
 {
     int fd;
 	
@@ -62,46 +65,30 @@ int uart_init(char *uart)
 		return -1;
 	}
 	
-    uart_set_speed(fd,7,0);
-	
 	return fd;
 }
 
-int uart_read(int fd)
+int uart_read(int fd, unsigned char *buf, unsigned size)
 {
-    int i, len;
-    char buf[50] = {0};
+    int res = -1, readed = 0;
     
-    len = read(fd, buf, sizeof(buf));
-    if (len > 0)
-    {
-        buf[len] = 0;
-        printf("%s \n",buf);
+	while (readed < size)
+	{
+		res = read(fd, buf + readed, size - readed);
+		if (res <= 0)
+		{
+			continue;
+		}
+		
+		readed += res;
     }
-    
-    return 0;
+	
+    return readed;
 }
 
-int uart_write(int fd, char *buf, int len)
+int uart_write(int fd, unsigned char *buf, unsigned size)
 { 
     int ret;
     
-    ret = write(fd, buf, len);  
+    ret = write(fd, buf, size);  
 }
-#if 0
-int main(int argc, char **args)
-{
-    int uart_fd, i = 5;
-    
-    uart_fd = uart_init(args[1]);
-    while(i--)
-    {
-        uart_write(uart_fd, "test", strlen("test"));
-        uart_read(uart_fd);
-    }
-    
-    close(uart_fd);
-    
-    return 0;
-}
-#endif

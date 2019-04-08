@@ -30,3 +30,6 @@ TARGET_LINK_LIBRARIES(test_mbits mlibc)
 
 ADD_EXECUTABLE(test_AVLTree test_AVLTree.c)  
 TARGET_LINK_LIBRARIES(test_AVLTree mlibc)
+
+ADD_EXECUTABLE(test_muart test_muart.c)  
+TARGET_LINK_LIBRARIES(test_muart mlibc)
