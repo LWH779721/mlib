@@ -26,6 +26,24 @@ static inline mmath_extend_to_blocks(uint32_t size)
     return (size + 0xFFF)&(~0xFFF);
 }
 
+/*
+* 将正整数a扩大至 2的幂
+*/
+static inline uint32_t enlarge_to_pow2(const uint32_t a)
+{
+    uint32_t ret = 1;
+    
+    if (a == 0) return 0;
+    if (a == 1) return 2;
+    
+    while (ret < a)
+    {
+        ret = ret << 1;
+    }
+    
+    return ret;
+}
+
 #ifdef __cplusplus
 }
 #endif
