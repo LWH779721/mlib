@@ -39,3 +39,6 @@ TARGET_LINK_LIBRARIES(test_mem_pool mlibc)
 
 ADD_EXECUTABLE(mshm_test mshm_test.c)  
 TARGET_LINK_LIBRARIES(mshm_test mlibc)
+
+ADD_EXECUTABLE(test_worker test_worker.c)  
+TARGET_LINK_LIBRARIES(test_worker mlibc)

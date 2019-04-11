@@ -15,9 +15,12 @@ AUX_SOURCE_DIRECTORY(algorithm MLIBC)
 AUX_SOURCE_DIRECTORY(util MLIBC)
 AUX_SOURCE_DIRECTORY(struct MLIBC)
 AUX_SOURCE_DIRECTORY(devices MLIBC)
+AUX_SOURCE_DIRECTORY(worker MLIBC)
 
 ADD_LIBRARY (mlibc SHARED ${MLIBC})
+TARGET_LINK_LIBRARIES(mlibc pthread)
 ADD_LIBRARY (mlibc_static STATIC ${MLIBC})
+TARGET_LINK_LIBRARIES(mlibc_static pthread)
 
 # 指定静态库的输出名称
 set_target_properties(mlibc_static PROPERTIES OUTPUT_NAME "mlibc")
