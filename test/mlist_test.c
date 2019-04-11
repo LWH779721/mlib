@@ -1,4 +1,5 @@
 #include <stdio.h>
+
 #include "struct/double_linked_list.h"
 
 struct list {
@@ -21,11 +22,11 @@ int main()
     struct list b = {.i = 2};
     struct list *p;
 
-    printf("counts : %d\n",head.counts);
+    printf("counts : %lu\n",head.counts);
     mlist_add(head, &a, node);
-    printf("counts : %d\n",head.counts);
+    printf("counts : %lu\n",head.counts);
     mlist_add(head, &b, node);
-    printf("counts : %d\n",head.counts);
+    printf("counts : %lu\n",head.counts);
     
     p = head.list; 
     while (p)
@@ -37,7 +38,7 @@ int main()
     
     printf("------------------------------\n");
     mlist_del(head, &b, node);
-    printf("counts : %d\n",head.counts);
+    printf("counts : %lu\n",head.counts);
     
     p = head.list; 
     while (p)
@@ -48,7 +49,7 @@ int main()
     }
     
     mlist_del(head, &a, node);
-    printf("counts : %d\n",head.counts);
+    printf("counts : %lu\n",head.counts);
     
     p = head.list; 
     while (p)

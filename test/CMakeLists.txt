@@ -36,3 +36,6 @@ TARGET_LINK_LIBRARIES(test_muart mlibc)
 
 ADD_EXECUTABLE(test_mem_pool test_mem_pool.c)  
 TARGET_LINK_LIBRARIES(test_mem_pool mlibc)
+
+ADD_EXECUTABLE(mshm_test mshm_test.c)  
+TARGET_LINK_LIBRARIES(mshm_test mlibc)
