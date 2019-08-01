@@ -19,6 +19,7 @@ AUX_SOURCE_DIRECTORY(worker MLIBC)
 
 ADD_LIBRARY (mlibc SHARED ${MLIBC})
 TARGET_LINK_LIBRARIES(mlibc pthread)
+
 ADD_LIBRARY (mlibc_static STATIC ${MLIBC})
 TARGET_LINK_LIBRARIES(mlibc_static pthread)
 

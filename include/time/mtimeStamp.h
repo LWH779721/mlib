@@ -8,8 +8,9 @@ extern "C"{
 #include <stdint.h>
 
 extern uint64_t mts_get_real_uts();
-extern uint64_t mts_get_real_mts();
-extern uint64_t ts_after_bootup();
+extern uint64_t mts_get_real_mts(); 
+// get monoto timestamp
+extern uint64_t monoto_ts();
 
 #define mts_uts_differ(start) (mts_get_real_uts() - start)
 
