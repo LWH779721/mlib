@@ -36,7 +36,10 @@ do{\
     old_ts = new_ts;\
 }while(0);
 
-extern void hexdump(unsigned char *buffer, int size);
+/* filename : DataDump.c */
+extern void hexdump(const unsigned char *buffer, int size);
+extern void octdump(const unsigned char *buffer, int size);
+extern void binarydump(const unsigned char *buffer, int size);
 
 #ifdef __cplusplus
 }
