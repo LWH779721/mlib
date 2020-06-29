@@ -36,10 +36,12 @@ do{\
     old_ts = new_ts;\
 }while(0);
 
-/* filename : DataDump.c */
+/* from file ByteDump.c */
+
+#define DUMPSPERLINE    8
 extern void hexdump(const unsigned char *buffer, int size);
 extern void octdump(const unsigned char *buffer, int size);
-extern void binarydump(const unsigned char *buffer, int size);
+extern void bitdump(const unsigned char *buffer, int size);
 
 #ifdef __cplusplus
 }
