@@ -19,6 +19,9 @@ TARGET_LINK_LIBRARIES(test_get_file_size mlibc)
 ADD_EXECUTABLE(test_file test_file.c)  
 TARGET_LINK_LIBRARIES(test_file mlibc)
 
+ADD_EXECUTABLE(test_file2 test_file.cpp)  
+TARGET_LINK_LIBRARIES(test_file2 mlibc)
+
 ADD_EXECUTABLE(timeStamp_test timeStamp_test.c)  
 TARGET_LINK_LIBRARIES(timeStamp_test mlibc)
 
@@ -42,3 +45,9 @@ TARGET_LINK_LIBRARIES(mshm_test mlibc)
 
 ADD_EXECUTABLE(test_worker test_worker.c)  
 TARGET_LINK_LIBRARIES(test_worker mlibc)
+
+ADD_EXECUTABLE(test_cks test_cks.c)  
+TARGET_LINK_LIBRARIES(test_cks mlibc)
+
+#ADD_EXECUTABLE(test_timer test_timer.c)  
+#TARGET_LINK_LIBRARIES(test_timer mlibc)
