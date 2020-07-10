@@ -7,6 +7,21 @@ extern "C"{
 
 #include <stdint.h>
 #include <stddef.h>
+
+//对值进行范围限制
+static inline int bounds(int value, int max, int min)
+{
+    if (value > max){
+        return max;
+    }
+    
+    if (value < min){
+        return min;
+    }
+    
+    return value;
+}
+
 /*
 *   check num a and num b has same sign, if yes return 1
 *   ex. a >= 0 and b >= 0 return 1
@@ -46,6 +61,7 @@ static inline uint32_t enlarge_to_pow2(const uint32_t a)
 }
 
 extern uint16_t checksum(uint8_t *data, const size_t size);
+
 #ifdef __cplusplus
 }
 #endif
