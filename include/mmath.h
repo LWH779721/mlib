@@ -7,10 +7,13 @@ extern "C"{
 
 #include <stdint.h>
 #include <stddef.h>
+#include <assert.h>
 
 //对值进行范围限制
-static inline int bounds(int value, int max, int min)
+static inline int bounds(int value, int min, int max)
 {
+    assert(min <= max);
+    
     if (value > max){
         return max;
     }
