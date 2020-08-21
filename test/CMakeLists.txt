@@ -49,5 +49,11 @@ TARGET_LINK_LIBRARIES(test_worker mlibc)
 ADD_EXECUTABLE(test_cks test_cks.c)  
 TARGET_LINK_LIBRARIES(test_cks mlibc)
 
-#ADD_EXECUTABLE(test_timer test_timer.c)  
-#TARGET_LINK_LIBRARIES(test_timer mlibc)
+ADD_EXECUTABLE(test_math test_math.c)  
+TARGET_LINK_LIBRARIES(test_math mlibc)
+
+ADD_EXECUTABLE(test_base64 test_base64.cpp)  
+TARGET_LINK_LIBRARIES(test_base64 mlibc)
+
+ADD_EXECUTABLE(test_stringHelper test_stringHelper.cpp)  
+TARGET_LINK_LIBRARIES(test_stringHelper mlibc)
