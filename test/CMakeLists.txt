@@ -2,7 +2,11 @@ cmake_minimum_required(VERSION 2.8)
 
 PROJECT(mlibc_test)
 
-INCLUDE_DIRECTORIES(../include) 
+INCLUDE_DIRECTORIES(../include)
+ 
+SET(libs mlibc gtest pthread)
+set(CMAKE_CXX_FLAGS -std=c++11)
+#ADD_DEFINITIONS()
 
 ADD_EXECUTABLE(example test.c)  
 TARGET_LINK_LIBRARIES(example mlibc)
@@ -28,8 +32,8 @@ TARGET_LINK_LIBRARIES(test_ts mlibc)
 ADD_EXECUTABLE(test_get_ip_and_mac test_get_ip_and_mac.c)  
 TARGET_LINK_LIBRARIES(test_get_ip_and_mac mlibc)
 
-ADD_EXECUTABLE(test_mbits test_mbits.c)  
-TARGET_LINK_LIBRARIES(test_mbits mlibc)
+#ADD_EXECUTABLE(test_mbits test_mbits.c)  
+#TARGET_LINK_LIBRARIES(test_mbits mlibc)
 
 ADD_EXECUTABLE(test_AVLTree test_AVLTree.c)  
 TARGET_LINK_LIBRARIES(test_AVLTree mlibc)
@@ -56,4 +60,7 @@ ADD_EXECUTABLE(test_base64 test_base64.cpp)
 TARGET_LINK_LIBRARIES(test_base64 mlibc)
 
 ADD_EXECUTABLE(test_stringHelper test_stringHelper.cpp)  
-TARGET_LINK_LIBRARIES(test_stringHelper mlibc)
+TARGET_LINK_LIBRARIES(test_stringHelper ${libs})
+
+ADD_EXECUTABLE(testByteUtil testByteUtil.cpp)  
+TARGET_LINK_LIBRARIES(testByteUtil ${libs})
