@@ -26,8 +26,8 @@ TARGET_LINK_LIBRARIES(test_file mlibc)
 ADD_EXECUTABLE(test_file2 test_file.cpp)  
 TARGET_LINK_LIBRARIES(test_file2 mlibc)
 
-ADD_EXECUTABLE(test_ts test_ts.c)  
-TARGET_LINK_LIBRARIES(test_ts mlibc)
+ADD_EXECUTABLE(test_time test_time.c)  
+TARGET_LINK_LIBRARIES(test_time mlibc)
 
 ADD_EXECUTABLE(test_get_ip_and_mac test_get_ip_and_mac.c)  
 TARGET_LINK_LIBRARIES(test_get_ip_and_mac mlibc)
@@ -59,8 +59,8 @@ TARGET_LINK_LIBRARIES(test_math mlibc)
 ADD_EXECUTABLE(test_base64 test_base64.cpp)  
 TARGET_LINK_LIBRARIES(test_base64 mlibc)
 
-ADD_EXECUTABLE(test_stringHelper test_stringHelper.cpp)  
-TARGET_LINK_LIBRARIES(test_stringHelper ${libs})
+#ADD_EXECUTABLE(test_stringHelper test_stringHelper.cpp)  
+#TARGET_LINK_LIBRARIES(test_stringHelper ${libs})
 
-ADD_EXECUTABLE(testByteUtil testByteUtil.cpp)  
-TARGET_LINK_LIBRARIES(testByteUtil ${libs})
+#ADD_EXECUTABLE(testByteUtil testByteUtil.cpp)  
+#TARGET_LINK_LIBRARIES(testByteUtil ${libs})

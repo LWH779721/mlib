@@ -2,7 +2,7 @@
 #include <stdint.h>
 #include <inttypes.h>
 
-#include "time/mtimestamp.h"
+#include "mtime.h"
 
 int main(int argc, char **args)
 {

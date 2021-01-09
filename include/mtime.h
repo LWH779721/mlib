@@ -1,5 +1,8 @@
-#ifndef __MTIMESTAMP_H__
-#define __MTIMESTAMP_H__
+/*
+ * 时间相关函数
+ */
+#ifndef __MTIME_H__
+#define __MTIME_H__
 
 #ifdef __cplusplus
 extern "C"{
