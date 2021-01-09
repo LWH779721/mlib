@@ -16,6 +16,10 @@ int main(int argc, char **args)
     
     ts = realtime_gmts();
     printf("ts: %"PRIu64"\n", ts);
+	
+	char buf[100] = {0};
+	getRF1123DateString(buf);
+	printf("%s\n", buf);
     
     return 0;
 }
